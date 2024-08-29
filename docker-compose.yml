@@ -20,7 +20,7 @@ services:
     image: php:8.0-apache
     container_name: php_server
     volumes:
-      - ./:/var/www/html
+      - ./src:/var/www/html
     ports:
       - "8080:80"
     depends_on:

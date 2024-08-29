@@ -25,13 +25,30 @@
           <th scope="col">Fornecedor</th>
         </tr>
       </thead>
-      <tbody>
+          <?php
+            include './conexao.php';
+
+            $sql = "SELECT * FROM `estoque`";
+            $busca = mysqli_query($conexao, $sql);
+
+            while ($array = mysqli_fetch_array($busca)) {
+              $id_estoque = $array['id_estoque'];
+              $nroproduto = $array['nroproduto'];
+              $nomeproduto = $array['nomeproduto'];
+              $categoria = $array['categoria'];
+              $quantidade = $array['quantidade'];
+              $fornecedor = $array['fornecedor'];
+          ?>
         <tr>
-          <td>
-            
-          </td>
+          <td><?php echo $nroproduto ?></td>
+          <td><?php echo $nomeproduto ?></td>
+          <td><?php echo $categoria ?></td>
+          <td><?php echo $quantidade ?></td>
+          <td><?php echo $fornecedor ?></td>
         </tr>
-      </tbody>
+
+        <?php } ?>
+
     </table>
   </div>
 
