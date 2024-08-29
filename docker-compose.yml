@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: php-bootstrap
+      MYSQL_USER: php
+      MYSQL_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    ports:
+      - "3307:3306"
+
+  php:
+    build: .
+    image: php:8.0-apache
+    container_name: php_server
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: php
+      DB_PASSWORD: root
+      DB_NAME: php-bootstrap
+
+volumes:
+  db_data:
