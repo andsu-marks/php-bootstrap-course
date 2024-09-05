@@ -39,6 +39,10 @@
       <button type="submit" class="btn btn-sm btn-success">Entrar</button>
     </div>
   </div>
+
+  <center>
+    <small>Você não possui cadastro? Clique <a href="./cadastro_usuario_externo.php"> aqui</a></small>
+  </center>
   
   <script 
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

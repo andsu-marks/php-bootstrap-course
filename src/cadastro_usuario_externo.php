@@ -14,7 +14,7 @@
   <div class="container" style="width: 400px; margin-top: 40px">
     <h4>Cadastro de Usuário</h4>
 
-    <form action="_insert_usuario.php" method="post">
+    <form action="_insert_usuario_externo.php" method="post">
       <div class="form-group">
         <label>Nome do Usuário</label>
         <input type="text" name="nomeusuario" class="form-control" placeholder="Nome Completo" autocomplete="off" required>
@@ -35,15 +35,6 @@
         <input type="password" name="senhausuario2" class="form-control" placeholder="Repetir Senha" autocomplete="off" required
         oninput="validasenha(this)">
         <small>Precisa ser igual a senha digitada acima</small>
-      </div>
-
-      <div class="form-group">
-        <label>Nível de Acesso</label>
-        <select name="nivelusuario" class="form-control">
-            <option value="1">Administrador</option>
-            <option value="2">Funcionario</option>
-            <option value="3">Conferente</option>
-        </select>
       </div>
 
       <div style="text-align: right;">
