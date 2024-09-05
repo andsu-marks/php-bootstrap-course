@@ -24,8 +24,8 @@
       </center>
     </div>
 
-    <form>
-      <div class="form-group">
+    <form action="./index1.php" method="post">
+      <div aclass="form-group">
         <label>Usuário</label>
         <input type="text" name="usuario" class="form-control" placeholder="Usuário" autocomplete="off" required>
       </div>
@@ -34,10 +34,10 @@
         <label>Senha</label>
         <input type="password" name="senha" class="form-control" placeholder="Senha" autocomplete="off" required>
       </div>
+      <div style="text-align: right;">
+        <button type="submit" class="btn btn-sm btn-success">Entrar</button>
+      </div>
     </form>
-    <div style="text-align: right;">
-      <button type="submit" class="btn btn-sm btn-success">Entrar</button>
-    </div>
   </div>
 
   <center>
