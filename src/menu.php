@@ -61,6 +61,16 @@
           </div>
         </div>
       </div>
+
+      <div class="col-sm-6" style="margin-top: 20px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Usuários Ativos</h5>
+            <p class="card-text">Listar Usuários Ativos</p>
+            <a href="./listar_usuarios_ativos.php" class="btn btn-primary">Usuários Ativos</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>  
 
