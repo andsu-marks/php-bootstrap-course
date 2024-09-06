@@ -1,3 +1,21 @@
+<?php
+  session_start();
+
+  
+  if (!isset($_SESSION['usuario'])) {
+    header('Location: index.php');
+    exit(); // Certifique-se de que o script pare aqui
+  }
+  
+  $usuario = $_SESSION['usuario'];
+  include './conexao.php';
+
+  $sql = "SELECT nivel FROM usuarios WHERE email = '$usuario' and status = 'Ativo'";
+  $buscar = mysqli_query($conexao, $sql);
+  $array = mysqli_fetch_array($buscar);
+  $nivelacesso = $array['nivel'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +49,15 @@
           <th scope="col">Nome</th>
           <th scope="col">E-mail</th>
           <th scope="col">Nível</th>
+          
+          <?php
+            if(($nivelacesso == 1)) {
+          ?>
+
           <th scope="col">Ação</th>
+
+          <?php } ?>
+
         </tr>
       </thead>
           <?php
@@ -50,10 +76,18 @@
           <td><?php echo $nome ?></td>
           <td><?php echo $email ?></td>
           <td><?php echo $nivel ?></td>
+
+          <?php
+            if(($nivelacesso == 1)) {
+          ?>
+
           <td>
             <a class="btn btn-warning btn-sm" href="./editar_usuario.php?id=<?php echo $id ?>" role="button"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Editar</a>
             <a class="btn btn-danger btn-sm" href="./deletar_produto.php?id=<?php echo $id_estoque ?>" role="button"><i class="fa-solid fa-trash-alt"></i>&nbsp;Excluir</a>
           </td>
+
+          <?php } ?>
+          
         </tr>
 
         <?php } ?>

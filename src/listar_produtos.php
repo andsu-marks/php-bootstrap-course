@@ -1,3 +1,21 @@
+<?php
+  session_start();
+
+  
+  if (!isset($_SESSION['usuario'])) {
+    header('Location: index.php');
+    exit(); // Certifique-se de que o script pare aqui
+  }
+  
+  $usuario = $_SESSION['usuario'];
+  include './conexao.php';
+
+  $sql = "SELECT nivel FROM usuarios WHERE email = '$usuario' and status = 'Ativo'";
+  $buscar = mysqli_query($conexao, $sql);
+  $array = mysqli_fetch_array($buscar);
+  $nivelacesso = $array['nivel'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +51,15 @@
           <th scope="col">Categoria</th>
           <th scope="col">Quantidade</th>
           <th scope="col">Fornecedor</th>
+
+          <?php
+            if(($nivelacesso == 1) || ($nivelacesso == 2)) {
+          ?>
+
           <th scope="col">Ação</th>
+
+          <?php } ?>
+
         </tr>
       </thead>
           <?php
@@ -56,16 +82,24 @@
           <td><?php echo $categoria ?></td>
           <td><?php echo $quantidade ?></td>
           <td><?php echo $fornecedor ?></td>
+
+          <?php
+            if(($nivelacesso == 1) || ($nivelacesso == 2)) {
+          ?>
+
           <td>
             <a class="btn btn-warning btn-sm" href="./editar_produto.php?id=<?php echo $id_estoque ?>" role="button"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Editar</a>
             <a class="btn btn-danger btn-sm" href="./deletar_produto.php?id=<?php echo $id_estoque ?>" role="button"><i class="fa-solid fa-trash-alt"></i>&nbsp;Excluir</a>
           </td>
+
+          <?php } ?>
+
         </tr>
 
         <?php } ?>
     </table>
     <div style="text-align: right">
-      <a href="./index.php" class="btn btn-sm btn-primary" id="button">Voltar</a>
+      <a href="./menu.php" class="btn btn-sm btn-primary" id="button">Voltar</a>
     </div>
   </div>
 

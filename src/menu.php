@@ -13,7 +13,7 @@
   $sql = "SELECT nivel FROM usuarios WHERE email = '$usuario' and status = 'Ativo'";
   $buscar = mysqli_query($conexao, $sql);
   $array = mysqli_fetch_array($buscar);
-  $nivel = $array['nivel'];
+  $nivelacesso = $array['nivel'];
 ?>
 
 
@@ -33,7 +33,7 @@
     <div class="row">
 
       <?php
-        if(($nivel == 1) || ($nivel == 2)) {
+        if(($nivelacesso == 1) || ($nivelacesso == 2)) {
       ?>
 
       <div class="col-sm-6">
@@ -58,6 +58,10 @@
         </div>
       </div>
 
+      <?php
+        if(($nivelacesso == 1) || ($nivelacesso == 2)) {
+      ?>
+
       <div class="col-sm-6" style="margin-top: 20px;">
         <div class="card">
           <div class="card-body">
@@ -67,6 +71,13 @@
           </div>
         </div>
       </div>
+
+      <?php
+        }
+        
+        if(($nivelacesso == 1) || ($nivelacesso == 2)) {
+
+      ?>
 
       <div class="col-sm-6" style="margin-top: 20px;">
         <div class="card">
@@ -78,6 +89,12 @@
         </div>
       </div>
 
+      <?php
+        }
+
+        if(($nivelacesso == 1)) {
+      ?>
+
       <div class="col-sm-6" style="margin-top: 20px;">
         <div class="card">
           <div class="card-body">
@@ -87,6 +104,12 @@
           </div>
         </div>
       </div>
+
+      <?php
+        }
+
+        if(($nivelacesso == 1)) {
+      ?>
 
       <div class="col-sm-6" style="margin-top: 20px;">
         <div class="card">
@@ -98,6 +121,12 @@
         </div>
       </div>
 
+      <?php
+        }
+
+        if(($nivelacesso == 1)) {
+      ?>
+
       <div class="col-sm-6" style="margin-top: 20px;">
         <div class="card">
           <div class="card-body">
@@ -107,6 +136,9 @@
           </div>
         </div>
       </div>
+
+      <?php } ?>
+
     </div>
   </div>  
 

@@ -31,7 +31,7 @@
       </div>
 
       <div style="text-align: right;">
-        <a href="./index.php" class="btn btn-sm btn-primary" id="button">Voltar</a>
+        <a href="./menu.php" class="btn btn-sm btn-primary" id="button">Voltar</a>
         <button type="submit" class="btn btn-sm" id="botao">Adicionar Fornecedor</button>
       </div>
     </form>
